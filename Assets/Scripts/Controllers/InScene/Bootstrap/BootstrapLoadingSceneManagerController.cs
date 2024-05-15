@@ -20,8 +20,6 @@ public class BootstrapLoadingSceneManagerController : SingletonPersistent<Bootst
 
     private IEnumerator OnSceneLoadedCoroutine(Scene scene)
     {
-
-
         yield return new WaitUntil(() => BootstrapLoadingFadeEffectController.EndFadeOut);
     }
 

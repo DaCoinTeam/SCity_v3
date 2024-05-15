@@ -1,5 +1,6 @@
 
 using System.Collections;
+using Unity.Netcode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,6 +64,12 @@ public class BootstrapModalController : SingletonPersistent<BootstrapModalContro
         }
 
         var modalInstance = Instantiate(modalPrefab, _backdropImage.transform);
+
+        
+        if (modalInstance.TryGetComponent<NetworkObject>(out var networkObject))
+        {
+            networkObject.Spawn();
+        }
 
         yield return AnimationUtility.WaitForAnimationCompletion(modalInstance);
 

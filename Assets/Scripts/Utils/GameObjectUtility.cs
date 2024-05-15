@@ -57,6 +57,4 @@ public static class GameObjectUtility
             Object.Destroy(child.gameObject);
         }
     }
-
-
 }
