@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BootstrapStartupController : SingletonPersistent<BootstrapStartupController>
 {
+
     private IEnumerator Start()
     {
         Application.targetFrameRate = 60;

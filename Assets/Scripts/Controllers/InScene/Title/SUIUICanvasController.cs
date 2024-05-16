@@ -19,10 +19,21 @@ public class SUIUICanvasController : Singleton<SUIUICanvasController>
 
     private void Start()
     {
+        var mnemonics = PlayerPrefs.GetString(Constants.PlayerPrefs.SUI_MNEMONICS);
+        if (mnemonics != null)
+        {
+            SuiWallet.RestoreWalletFromMnemonics(mnemonics);
+            var address = SuiWallet.GetActiveAddress();
+            _blockchainDataScriptableObject.Address = address;
+
+            BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Game);
+        }
+
         _createNewWalletButton.onClick.AddListener(() =>
         {
             var mnemonics = SuiWallet.CreateNewWallet();
-            PlayerPrefs.SetString(Constants.PlayersPref.SUI_MNEMONICS, mnemonics);
+            PlayerPrefs.SetString(Constants.PlayerPrefs.SUI_MNEMONICS, mnemonics);
+
 
             var address = SuiWallet.GetActiveAddress();
             _blockchainDataScriptableObject.Address = address;

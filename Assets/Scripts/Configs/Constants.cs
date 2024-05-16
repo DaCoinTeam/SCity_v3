@@ -1,6 +1,6 @@
 public class Constants
 {
-    public class PlayersPref
+    public class PlayerPrefs
     {
         public static readonly string SUI_MNEMONICS = "SuiMnemonics";
     }
