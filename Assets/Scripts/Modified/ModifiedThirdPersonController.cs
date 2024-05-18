@@ -144,7 +144,6 @@ namespace StarterAssets
                 _cinemachineVirtualMainCamera = GameObject.Find("Virtual Main Camera").GetComponent<CinemachineVirtualCamera>();
             }
 
-#if ENABLE_INPUT_SYSTEM && (UNITY_ANDROID || UNITY_IOS)
             if (_uiCanvasControllerInput == null)
             {
                 _uiCanvasControllerInput = FindObjectOfType<UICanvasControllerInput>();
@@ -154,7 +153,6 @@ namespace StarterAssets
             {
                 _mobileDisableAutoSwitchControls = FindObjectOfType<ModifiedMobileDisableAutoSwitchControls>();
             }
-#endif
         }
         private void Start()
         {
@@ -181,10 +179,8 @@ namespace StarterAssets
                 //_minimapCinemachineVirtualCamera.Follow = CinemachineCameraTarget.transform;
                 //_minimapCinemachineVirtualCamera.LookAt = CinemachineCameraTarget.transform;
 
-#if ENABLE_INPUT_SYSTEM && (UNITY_IOS || UNITY_ANDROID)
                 _uiCanvasControllerInput.starterAssetsInputs = GetComponent<StarterAssetsInputs>();
                 _mobileDisableAutoSwitchControls.playerInput = GetComponent<PlayerInput>();
-#endif
             }
         }
 

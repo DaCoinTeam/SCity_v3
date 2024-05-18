@@ -5,7 +5,7 @@ using UnityEngine;
 public class ServerNetworkController : SingletonPersistent<ServerNetworkController>
 {
     [SerializeField]
-    private bool _isProduction = false;
+    private bool _isProduction;
 
     private void Start()
     {
@@ -13,13 +13,13 @@ public class ServerNetworkController : SingletonPersistent<ServerNetworkControll
 
         if (_isProduction)
         {
-            var certTxt = (TextAsset)Resources.Load(Constants.Resources.Secrets.CERT);
-            var privateKeyTxt = (TextAsset)Resources.Load(Constants.Resources.Secrets.PRIVATE_KEY);
+            var certTxt = (TextAsset) Resources.Load(Constants.Resources.Secrets.CertPath);
+            var privateKeyTxt = (TextAsset) Resources.Load(Constants.Resources.Secrets.PrivateKeyPath);
 
             unityTransport.ConnectionData = new ()
             {
-                Address = Constants.VPS.IPV4,
-                Port = Constants.VPS.PORT
+                Address = Constants.Environment.Production.IpV4,
+                Port = Constants.Environment.Production.Port
             };
 
             unityTransport.UseWebSockets = true;

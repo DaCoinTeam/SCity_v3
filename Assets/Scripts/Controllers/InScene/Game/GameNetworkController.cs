@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class GameNetworkController : SingletonPersistent<GameNetworkController>
 {
+    [SerializeField]
+    private bool _isProduction;
     private void Start()
     {
-        var unityTransport = FindObjectOfType<UnityTransport>();
-        unityTransport.SetClientSecrets("wssscity.longphu.dev");
+        if (_isProduction)
+        {
+            var unityTransport = FindObjectOfType<UnityTransport>();
+            unityTransport.ConnectionData = new()
+            {
+                Address = Constants.Environment.Production.IpV4,
+                Port = Constants.Environment.Production.Port,
+            };
+            unityTransport.SetClientSecrets(Constants.Environment.Production.MappingUrl);
+        }
+       
 
         NetworkManager.Singleton.StartClient();
         NetworkManager.Singleton.OnClientConnectedCallback += (id) =>

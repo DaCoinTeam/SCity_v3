@@ -19,7 +19,7 @@ public class SUIUICanvasController : Singleton<SUIUICanvasController>
 
     private void Start()
     {
-        var mnemonics = PlayerPrefs.GetString(Constants.PlayerPrefs.SUI_MNEMONICS);
+        var mnemonics = PlayerPrefs.GetString(Constants.PlayerPrefs.SuiMnemonics);
         if (mnemonics != null)
         {
             SuiWallet.RestoreWalletFromMnemonics(mnemonics);
@@ -32,7 +32,7 @@ public class SUIUICanvasController : Singleton<SUIUICanvasController>
         _createNewWalletButton.onClick.AddListener(() =>
         {
             var mnemonics = SuiWallet.CreateNewWallet();
-            PlayerPrefs.SetString(Constants.PlayerPrefs.SUI_MNEMONICS, mnemonics);
+            PlayerPrefs.SetString(Constants.PlayerPrefs.SuiMnemonics, mnemonics);
 
 
             var address = SuiWallet.GetActiveAddress();
