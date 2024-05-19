@@ -152,7 +152,7 @@ namespace StarterAssets
             if (_mobileDisableAutoSwitchControls == null)
             {
                 _mobileDisableAutoSwitchControls = FindObjectOfType<ModifiedMobileDisableAutoSwitchControls>();
-            }
+            }   
         }
         private void Start()
         {

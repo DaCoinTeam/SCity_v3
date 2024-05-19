@@ -11,6 +11,9 @@ public class GameNetworkController : SingletonPersistent<GameNetworkController>
         if (_isProduction)
         {
             var unityTransport = FindObjectOfType<UnityTransport>();
+            unityTransport.UseWebSockets = true;
+            unityTransport.UseEncryption = true;
+
             unityTransport.ConnectionData = new()
             {
                 Address = Constants.Environment.Production.IpV4,

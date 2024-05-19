@@ -19,31 +19,31 @@ public class SUIUICanvasController : Singleton<SUIUICanvasController>
 
     private void Start()
     {
-        var mnemonics = PlayerPrefs.GetString(Constants.PlayerPrefs.SuiMnemonics);
-        if (mnemonics != null)
-        {
-            SuiWallet.RestoreWalletFromMnemonics(mnemonics);
-            var address = SuiWallet.GetActiveAddress();
-            _blockchainDataScriptableObject.Address = address;
+        //var mnemonics = PlayerPrefs.GetString(Constants.PlayerPrefs.SuiMnemonics);
+        //if (mnemonics != null)
+        //{
+        //    SuiWallet.RestoreWalletFromMnemonics(mnemonics);
+        //    var address = SuiWallet.GetActiveAddress();
+        //    _blockchainDataScriptableObject.Address = address;
 
-            BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Game);
-        }
+        //    BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Game);
+        //}
 
-        _createNewWalletButton.onClick.AddListener(() =>
-        {
-            var mnemonics = SuiWallet.CreateNewWallet();
-            PlayerPrefs.SetString(Constants.PlayerPrefs.SuiMnemonics, mnemonics);
+        //_createNewWalletButton.onClick.AddListener(() =>
+        //{
+        //    var mnemonics = SuiWallet.CreateNewWallet();
+        //    PlayerPrefs.SetString(Constants.PlayerPrefs.SuiMnemonics, mnemonics);
 
 
-            var address = SuiWallet.GetActiveAddress();
-            _blockchainDataScriptableObject.Address = address;
+        //    var address = SuiWallet.GetActiveAddress();
+        //    _blockchainDataScriptableObject.Address = address;
 
-            BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Game);
-        });
+        //    BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Game);
+        //});
 
-        _importAWalletButton.onClick.AddListener(() =>
-        {
-            BootstrapModalController.Instance.CreateModal(_inputMnemonicsModal);
-        });
+        //_importAWalletButton.onClick.AddListener(() =>
+        //{
+        //    BootstrapModalController.Instance.CreateModal(_inputMnemonicsModal);
+        //});
     }
 }

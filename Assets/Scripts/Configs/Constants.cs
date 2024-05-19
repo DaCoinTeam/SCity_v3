@@ -1,9 +1,15 @@
 public static class Constants
 {
+    public static class DefaultValues
+    {
+        public static readonly float Scrollbar = 0.5f;
+    }
+
     public static class PlayerPrefs
     {
         public static readonly string SuiMnemonics = "SuiMnemonics";
     }
+
     public static class Resources
     {
         private static readonly string SecretsPath = "Secrets";

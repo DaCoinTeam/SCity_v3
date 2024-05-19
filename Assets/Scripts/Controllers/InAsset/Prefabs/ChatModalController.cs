@@ -32,6 +32,7 @@ public class ChatModalController : Singleton<ChatModalController>
     public void CreateChatItem(string username, string message)
     {
         _empty.gameObject.SetActive(false);
+
         if (_chatContainer.childCount == 5)
         {
             Destroy(_chatContainer.GetChild(0).gameObject);
