@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bootstrap.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Title.unity
     guid: 3cabc4823151a8f4f810b9964930dc21
   - enabled: 1
@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Server.unity
     guid: f3551ebaf4c65334d9bd13d7dad59df9
   - enabled: 0
-    path: Assets/MetaMask/Samples/Main/Scenes/MetaMask Main (Sample).unity
+    path: Assets/Third Parties/MetaMask/Samples/Main/Scenes/MetaMask Main (Sample).unity
     guid: ca0505b2cc25d9343a2ee46407aa8970
   - enabled: 0
-    path: Assets/MetaMask/Samples/Test/TestScene.unity
+    path: Assets/Third Parties/MetaMask/Samples/Test/TestScene.unity
     guid: eaab88c72a2c1044bab368d8e5fdb5fb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

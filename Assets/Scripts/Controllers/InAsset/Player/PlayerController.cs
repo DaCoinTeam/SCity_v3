@@ -10,7 +10,6 @@ public class PlayerController : NetworkBehaviour
     [Range(0f, 5f)]
     [SerializeField]
     private float _spawnRandomRange = 1f;
-
     private IEnumerator Start()
     {
         if (IsOwner)

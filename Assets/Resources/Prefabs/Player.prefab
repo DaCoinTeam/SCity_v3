@@ -1099,6 +1099,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  CameraSensitivity: 10
 --- !u!114 &7836449569403789142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,6 +1169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74fc1ed7a5a1b346b4eec733898f6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnPosition: {x: 0, y: 0, z: 0}
+  _spawnRandomRange: 1
 --- !u!1 &2935332049217758800
 GameObject:
   m_ObjectHideFlags: 0

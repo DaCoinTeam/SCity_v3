@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using MetaMask.Unity;
 
 public class GameUIController : Singleton<GameUIController>
 {

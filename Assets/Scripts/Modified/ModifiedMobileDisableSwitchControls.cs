@@ -16,7 +16,7 @@ using UnityEngine.InputSystem;
 public class ModifiedMobileDisableAutoSwitchControls : MonoBehaviour
 {
 
-#if ENABLE_INPUT_SYSTEM && (UNITY_IOS || UNITY_ANDROID || UNITY_EDITOR || UNITY_WEBGL)
+#if ENABLE_INPUT_SYSTEM && (UNITY_IOS || UNITY_ANDROID)
 
     [Header("Target")]
     public PlayerInput playerInput;
@@ -31,7 +31,10 @@ public class ModifiedMobileDisableAutoSwitchControls : MonoBehaviour
     {
         playerInput.neverAutoSwitchControlSchemes = true;
     }
-
+#else
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
 #endif
-
 }

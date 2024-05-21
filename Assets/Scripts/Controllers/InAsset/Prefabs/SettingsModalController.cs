@@ -1,4 +1,6 @@
 using Cinemachine;
+using StarterAssets;
+using System.Collections;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -25,29 +27,27 @@ public class SettingsModalController : Singleton<SettingsModalController>
     private Button _closeButton;
 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
-    private UIVirtualJoystick uiVirtualJoystick;
+    private ModifiedThirdPersonController modifiedThirdPersonController;
 
-    void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitUntil(() => NetworkManager.Singleton.LocalClient.PlayerObject != null);
         cinemachineVirtualCamera = GameObject.Find("Virtual Main Camera").GetComponent<CinemachineVirtualCamera>();
-        uiVirtualJoystick = FindObjectOfType<UIVirtualJoystick>();
+        modifiedThirdPersonController = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<ModifiedThirdPersonController>();
 
         _resetButton.onClick.AddListener(() =>
         {
             cinemachineVirtualCamera.m_Lens.FieldOfView = Constants.DefaultValues.Scrollbar;
-            uiVirtualJoystick.magnitudeMultiplier = Constants.DefaultValues.Scrollbar;
             //volumeValue = Constants.DefaultValues.Scrollbar;
         });
 
         _applyButton.onClick.AddListener(UpdateSettings);
         _closeButton.onClick.AddListener(BootstrapModalController.Instance.CloseNearestModal);
-
-        UpdateSettings();
     }
 
     private void UpdateSettings()
     {
         cinemachineVirtualCamera.m_Lens.FieldOfView = _fovScrollbar.value * 150f;
-        uiVirtualJoystick.magnitudeMultiplier = _cameraSensitivityScrollbar.value * 30f;
+        modifiedThirdPersonController.CameraSensitivity = _cameraSensitivityScrollbar.value * 10;
     }
 }

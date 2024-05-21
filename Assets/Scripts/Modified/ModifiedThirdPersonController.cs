@@ -77,6 +77,8 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        public float CameraSensitivity = 1f;
+        
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -144,6 +146,7 @@ namespace StarterAssets
                 _cinemachineVirtualMainCamera = GameObject.Find("Virtual Main Camera").GetComponent<CinemachineVirtualCamera>();
             }
 
+#if ENABLE_INPUT_SYSTEM && (UNITY_IOS || UNITY_ANDROID)
             if (_uiCanvasControllerInput == null)
             {
                 _uiCanvasControllerInput = FindObjectOfType<UICanvasControllerInput>();
@@ -153,6 +156,7 @@ namespace StarterAssets
             {
                 _mobileDisableAutoSwitchControls = FindObjectOfType<ModifiedMobileDisableAutoSwitchControls>();
             }   
+#endif
         }
         private void Start()
         {
@@ -179,8 +183,10 @@ namespace StarterAssets
                 //_minimapCinemachineVirtualCamera.Follow = CinemachineCameraTarget.transform;
                 //_minimapCinemachineVirtualCamera.LookAt = CinemachineCameraTarget.transform;
 
+#if ENABLE_INPUT_SYSTEM && (UNITY_IOS || UNITY_ANDROID)
                 _uiCanvasControllerInput.starterAssetsInputs = GetComponent<StarterAssetsInputs>();
                 _mobileDisableAutoSwitchControls.playerInput = GetComponent<PlayerInput>();
+#endif
             }
         }
 
@@ -233,8 +239,8 @@ namespace StarterAssets
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
-                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
+                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * CameraSensitivity;
+                _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * CameraSensitivity;
             }
 
             // clamp our rotations so our values are limited 360 degrees

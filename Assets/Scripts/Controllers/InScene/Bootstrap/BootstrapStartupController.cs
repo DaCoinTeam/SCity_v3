@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class BootstrapStartupController : SingletonPersistent<BootstrapStartupController>
 {
-
     private IEnumerator Start()
     {
         Application.targetFrameRate = 60;
@@ -15,7 +15,7 @@ public class BootstrapStartupController : SingletonPersistent<BootstrapStartupCo
         && BootstrapModalController.Instance != null 
         );
 
-        BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Title);
+        BootstrapLoadingSceneManagerController.Instance.LoadScene(SceneName.Game);
     }
 
 }
